@@ -1,7 +1,11 @@
 get '/' do
   @surveys = Survey.all
-
-  erb :surveys
+  if request.xhr?
+    erb :surveys
+    "sneeze"
+  else
+    erb :surveys
+  end
 end
 
 #not done
