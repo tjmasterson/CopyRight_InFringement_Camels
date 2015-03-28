@@ -1,8 +1,8 @@
-get '/' do
-  @surveys = Survey.all
+# get '/' do
+#   @surveys = Survey.all
 
-  erb :surveys
-end
+#   erb :surveys
+# end
 
 #not done
 post '/' do
