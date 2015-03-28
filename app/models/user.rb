@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_many :answered_questions, through: :choices, source: :question
   has_many :completed_surveys, through: :answered_questions
 
+  # validates :name, :length => { :minimum => 3, :message => "must be at least 3 characters, fool!" }
+  # validates :entered_password, :length => { :minimum => 6 }
+  # validates :email, :uniqueness => true, :format => /.+@.+\..+/ # imperfect, but okay
+
   def password=(new_password)
     @password = Password.create(new_password)
     self.password_hash = @password
