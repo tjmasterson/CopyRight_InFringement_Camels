@@ -20,3 +20,10 @@ response_two = Response.create(voter: joe, choice: choice_three)
 
 response_one = Response.create(voter: joanne, choice: choice_two)
 response_two = Response.create(voter: joanne, choice: choice_four)
+
+
+post '/survey' do
+  @new_survey = Survey.create(creator: session[user_id])
+  @new_survey.questions.create(params[:questions])
+
+end
