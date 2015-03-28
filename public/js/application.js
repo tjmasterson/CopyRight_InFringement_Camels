@@ -2,7 +2,6 @@ $(document).ready(function() {
   $(".view_more").click(function(e){
     e.preventDefault();
 
-    var button = $(this);
     var $container = $(e.target).closest("td");
     var viewMore = "view more";
     var viewLess = "view less";
@@ -11,6 +10,7 @@ $(document).ready(function() {
     $("#description").css("hidden");
     $(moreLess).text(viewMore);
     var desc = $container.find(".description");
+
     $(desc).toggle(function(){
       $(moreLess).text(viewLess);
     });

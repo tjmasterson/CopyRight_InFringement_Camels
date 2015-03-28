@@ -1,11 +1,6 @@
 get '/' do
-  @surveys = Survey.all
-  if request.xhr?
-    erb :surveys
-    "sneeze"
-  else
-    erb :surveys
-  end
+
+ redirect '/surveys'
 end
 
 #not done
