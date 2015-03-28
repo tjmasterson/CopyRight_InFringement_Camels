@@ -1,15 +1,21 @@
 $(document).ready(function() {
   $(".view_more").click(function(e){
     e.preventDefault();
+
     var button = $(this);
+    var $container = $(e.target).closest("td");
 
 
     $.ajax({
       url:"/",
       method: "get",
       success: function(response){
-        var p = button.closest(".description");
-        $("p").append(response);
+        $container.html(response);
+        var $desc = $container.find(".description");
+        $desc.append(response);
+        // var p = container.find("p");
+       // console.log(button.find(".description"))
+       //  $(".view_more").text("view less");
       }
     })
 
