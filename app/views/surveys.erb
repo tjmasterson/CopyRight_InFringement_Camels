@@ -3,7 +3,7 @@
   <tr>
     <td><form action= "/" method="get">
         <input type="submit" value="Take Survey"></form></td>
-  <td><%=survey.title %> <a class="view_more" href="/">view more</a><i><p class="description"></p></i></td>
+  <td><%=survey.title %> <a class="view_more" href="/"> view more</a><i><p style="display:none" class="description"><%=survey.description%></p></i></td>
 </tr>
   <%end%>
 </table>

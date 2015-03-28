@@ -4,25 +4,31 @@ $(document).ready(function() {
 
     var button = $(this);
     var $container = $(e.target).closest("td");
+    var viewMore = "view more";
+    var viewLess = "view less";
+
+    var moreLess = $container.find("a.view_more");
+    $("#description").css("hidden");
+    $(moreLess).text(viewMore);
+    var desc = $container.find(".description");
+    $(desc).toggle(function(){
+      $(moreLess).text(viewLess);
+    });
 
 
-    $.ajax({
-      url:"/",
-      method: "get",
-      success: function(response){
-        $container.html(response);
-        var $desc = $container.find(".description");
-        $desc.append(response);
-        // var p = container.find("p");
-       // console.log(button.find(".description"))
-       //  $(".view_more").text("view less");
-      }
-    })
+    // $.ajax({
+    //   url:"/",
+    //   method: "get",
+    //   success: function(response){
+
+    //     // var $desc = $container.find(".description");
+    //     // $desc.html(response);
+    //     // var $currClass = $container.find(".view_more")
+    //     // $currClass.text("view less");
+    //     // $currClass.attr("class", "view_less");
+    //   }
+    // });
 
   });
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 });
