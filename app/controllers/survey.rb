@@ -1,8 +1,19 @@
 
 get '/surveys' do
-  puts session[:user_id]
   @surveys = Survey.all
   erb :"surveys/index"
+end
+
+get '/surveys/new' do
+
+  erb :"surveys/new"
+end
+
+post '/surveys' do
+  @survey = Survey.create(params[:survey])
+  @survey.add_question(params)
+
+  erb :"surveys/show"
 end
 
 get '/surveys/:id' do

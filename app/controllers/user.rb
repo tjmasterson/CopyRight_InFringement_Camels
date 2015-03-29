@@ -31,7 +31,6 @@ post "/signup" do
   user = User.new(params[:user])
   if user
     session[:user_id] = user.id
-    puts session.inspect
     user.save
     redirect "/surveys"
   end
