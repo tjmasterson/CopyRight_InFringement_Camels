@@ -20,4 +20,5 @@ end
   post '/surveys/:survey_id/complete' do
       puts current_user.id
       puts params
+      current_user.responses.create()
   end
