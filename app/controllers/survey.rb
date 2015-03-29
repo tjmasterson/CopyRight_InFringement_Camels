@@ -10,10 +10,10 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-  @survey = Survey.create(params[:survey])
+  @survey = Survey.create(params[:survey].merge(user: current_user))
   @survey.add_question(params)
 
-  erb :"surveys/show"
+  redirect "/surveys/#{@survey.id}"
 end
 
 get '/surveys/:id' do
@@ -32,18 +32,23 @@ end
 
   post '/surveys/:survey_id/complete' do
     @survey = Survey.find_by(id: params[:survey_id])
-    puts params
-
-    # @response = Response.new(params[:choice])
-    # @response.save
-
-    # current_user.responses.create(survey: @survey, choice: )
+    params[:question].each do |question_id, response|
+      question = Question.find_by(id: question_id.to_i)
+      question.choices.each do |choice|
+        if choice.content == response
+           Response.create(choice: choice, voter: current_user, survey: @survey)
+        end
+      end
+    end
     redirect "surveys/#{@survey.id}/results"
   end
 
 get '/surveys/:survey_id/results' do
-  @survey = params[:survey_id]
-
+  @voters = User.all
+  @survey = Survey.find_by(id: params[:survey_id])
+  @user = current_user
+  @responses =
+  @overal
 
   erb :"results/show"
 end

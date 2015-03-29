@@ -4,10 +4,6 @@ class Response < ActiveRecord::Base
   belongs_to :survey
   belongs_to :question
 
-  def new(hash)
-    response = Response.create(hash)
-  end
-
 end
 
 
