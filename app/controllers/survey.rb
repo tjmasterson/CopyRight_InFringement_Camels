@@ -16,3 +16,8 @@ get '/surveys/:id' do
       redirect "/login"
   end
 end
+
+  post '/surveys/:survey_id/complete' do
+      puts current_user.id
+      puts params
+  end
