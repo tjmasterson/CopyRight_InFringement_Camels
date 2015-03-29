@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
   -->
-  <link rel="stylesheet" href="/css/normalize.css">
+
+  <link href="/css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap/dist/css/jumbotron-narrow.css">
   <!--
     application.css is where you put your styles
   -->
-  <link rel="stylesheet" href="/css/application.css">
+
+
+
+  <!-- original css -->
+<!--   <link rel="stylesheet" href="/css/application.css"> -->
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
@@ -18,15 +32,26 @@
   <title></title>
 </head>
 <body>
-    <div class="header">
-    <h5><a href="">Home</a></h5>
-    <% if current_user %>
-      <h5><a href='/logout'>Logout</a></h5>
-      <h5>Signed in as: <a href=""><%= current_user.email %></a></h5>
-    <% else %>
-      <h5><a href="/login">Login</a></h5>
-    <% end %>
-  </div>
+    <div class="container">
+    <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active"><a href="/surveys">Home</a></li>
+            <li role="presentation"><a href="/signup">Sign Up</a></li>
+            <% if current_user %>
+            <li role="presentation"><a href='/logout'>Logout</a></li>
+            <li role="presentation" >Signed in as: <a href=""><%= current_user.email %></a></h5>
+            <% else %>
+            <li role="presentation"><a href='/login'>Login</a></li>
+            <% end %>
+          </ul>
+        </nav>
+      <h3 class="text-muted">Copyright Infringement Camels</h3>
+    </div>
+
   <%= yield %>
+  <footer class="footer">
+    <p>&copy; Copyright Infringement Camels 2015</p>
+  </footer>
 </body>
 </html>
