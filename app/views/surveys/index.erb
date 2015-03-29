@@ -14,12 +14,12 @@
 <div class="row marketing">
   <div class="col-lg-6">
       <%@surveys.each do |survey|%>
-      <div id="individual_survey">
+      <div class="individual_survey">
         <h4><%=survey.title %></h4>
         <p><a class="view_more" href="/"> view more</a><i><p style="display:none" class="description"><%=survey.description%></i></p>
         <% if current_user %>
         <form action= "/surveys/<%=survey.id%>" method="get">
-        <input type="submit" value="Take Survey">
+        <input type="submit" class="btn btn-primary" value="Take Survey">
         </form>
         <% else %>
         <form action= "/login" method="get">
