@@ -1,7 +1,34 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $(".view_more").click(function(e){
+    e.preventDefault();
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    var $container = $(e.target).closest("td");
+    var viewMore = "view more";
+    var viewLess = "view less";
+
+    var moreLess = $container.find("a.view_more");
+    $("#description").css("hidden");
+    $(moreLess).text(viewMore);
+    var desc = $container.find(".description");
+
+    $(desc).toggle(function(){
+      $(moreLess).text(viewLess);
+    });
+
+
+    // $.ajax({
+    //   url:"/",
+    //   method: "get",
+    //   success: function(response){
+
+    //     // var $desc = $container.find(".description");
+    //     // $desc.html(response);
+    //     // var $currClass = $container.find(".view_more")
+    //     // $currClass.text("view less");
+    //     // $currClass.attr("class", "view_less");
+    //   }
+    // });
+
+  });
+
 });
