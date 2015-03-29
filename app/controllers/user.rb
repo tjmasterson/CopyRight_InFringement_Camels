@@ -8,9 +8,12 @@ get "/login" do
 end
 
 post "/login" do
-  @email = params[:user][:email]
-  user = User.authenticate(@email, params[:user][:password])
+  # @email = params[:user][:email]
+  user = User.authenticate(params[:user])
+  puts user
   if user
+    puts session.inspect
+    puts user.id
     session[:user_id] = user.id
     redirect "/surveys"
   else

@@ -20,9 +20,9 @@ class User < ActiveRecord::Base
     @password ||= Password.new(password_hash)
   end
 
-  def self.authenticate(email, password)
-    user = User.find_by(email: email) #finds user based off the given email
-    user if user && (user.password == password) #returns user if the user was found by password AND its password is equal to the password given
+  def self.authenticate(params)
+    user = User.find_by_email(params[:email]) #finds user based off the given email
+    (user && user.password == params[:password]) ? user : nil #returns user if the user was found by password AND its password is equal to the password given
   end
 
 end

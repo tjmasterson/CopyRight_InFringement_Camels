@@ -2,12 +2,12 @@ $(document).ready(function() {
   $(".view_more").click(function(e){
     e.preventDefault();
 
-    var $container = $(e.target).closest("td");
+    var $container = $(e.target).closest("#individual_survey");
     var viewMore = "view more";
     var viewLess = "view less";
 
     var moreLess = $container.find("a.view_more");
-    $("#description").css("hidden");
+    $(".description").css("hidden");
     $(moreLess).text(viewMore);
     var desc = $container.find(".description");
 

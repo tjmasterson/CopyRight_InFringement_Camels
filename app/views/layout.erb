@@ -37,10 +37,12 @@
         <nav>
           <ul class="nav nav-pills pull-right">
             <li role="presentation" class="active"><a href="/surveys">Home</a></li>
+            <% if !current_user %>
             <li role="presentation"><a href="/signup">Sign Up</a></li>
+            <% end %>
             <% if current_user %>
             <li role="presentation"><a href='/logout'>Logout</a></li>
-            <li role="presentation" >Signed in as: <a href=""><%= current_user.email %></a></h5>
+            <li><a href=""><%= current_user.email %></a></li>
             <% else %>
             <li role="presentation"><a href='/login'>Login</a></li>
             <% end %>
@@ -48,10 +50,11 @@
         </nav>
       <h3 class="text-muted">Copyright Infringement Camels</h3>
     </div>
-
   <%= yield %>
+
   <footer class="footer">
     <p>&copy; Copyright Infringement Camels 2015</p>
   </footer>
+</div>
 </body>
 </html>
