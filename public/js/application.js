@@ -17,6 +17,28 @@ $(document).ready(function() {
             $(moreLess).text("view more");
         }
     });
+  });
+    $(".add_question").click(function(e){
+        e.preventDefault();
+        var button = $(this);
+
+        var request = $.ajax({
+            url: button.attr("href"),
+            method: "POST",
+            data: button.serialize()
+          });
+
+        request.done(function(response){
+            var content = response;
+            console.log(content)
+            $(".survey_creation").append(content.form);
+        });
+
+    });
+
+});
+
+
 
 
     // $.ajax({
@@ -31,7 +53,3 @@ $(document).ready(function() {
     //     // $currClass.attr("class", "view_less");
     //   }
     // });
-
-  });
-
-});

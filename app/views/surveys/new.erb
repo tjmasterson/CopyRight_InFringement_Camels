@@ -1,17 +1,28 @@
 <h1>Create a new survey:</h1>
 
 <form action="/surveys" method="post"/>
+<div class="survey_creation form-group">
   <label class="col-sm-2 control-label">Survey: </label>
   <input type="text" class="form-control" placeholder="Enter survey name here..." name="survey[title]"/><br>
 
   <label class="col-sm-2 control-label">Description: </label>
   <input type="text" class="form-control" placeholder="Enter survey description here..." name="survey[description]"/><br>
 
+
   <%= erb :"surveys/_survey"%>
     <br><br>
-<input type="submit" value="Add Question"/>
+  </div>
+<a href="/surveys/questions/new" class="add_question btn btn-primary" value="Add Question"></a>
 <br><br>
-</form>
-<form action="/surveys" method="post"/>
+
   <input type="submit" value="Complete Survey!"/>
 </form>
+
+
+<!-- <form action="/surveys" method="post"/>
+  <input type="submit" value="Complete Survey!"/>
+</form>
+ -->
+
+
+
