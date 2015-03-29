@@ -43,10 +43,10 @@
             <li role="presentation"><a href="/signup">Sign Up</a></li>
             <% end %>
             <% if current_user %>
-            <li role="presentation"><a href='/logout'>Logout</a></li>
+            <li role="presentation"><a href='/logout'>Sign Out</a></li>
             <li><a href=""><%= current_user.email %></a></li>
             <% else %>
-            <li role="presentation"><a href='/login'>Login</a></li>
+            <li role="presentation"><a href='/login'>Sign In</a></li>
             <% end %>
           </ul>
         </nav>

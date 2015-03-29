@@ -2,7 +2,13 @@
 <div class="jumbotron">
   <h1>Yessss!!!</h1>
   <p class="lead"><img src="https://38.media.tumblr.com/08c0e461854b592b1e9e44f046d77034/tumblr_n8i7pcJcKU1sp4nfqo1_500.gif"</img></p>
-  <p><a class="btn btn-lg btn-success" href="#" role="button">Create Survey :)</a></p>
+  <p>
+    <% if current_user %>
+    <a class="btn btn-lg btn-success" href="/surveys/new" role="button">Create Survey :)</a>
+    <% else %>
+    <a class="btn btn-lg btn-success" href="/login" role="button">Sign In to Create/Take Survey :)</a>
+    <% end %>
+  </p>
 </div>
 
 <div class="row marketing">
@@ -11,9 +17,15 @@
       <div class="individual_survey">
         <h4><%=survey.title %></h4>
         <p><a class="view_more" href="/"> view more</a><i><p style="display:none" class="description"><%=survey.description%></i></p>
+        <% if current_user %>
         <form action= "/surveys/<%=survey.id%>" method="get">
         <input type="submit" class="btn btn-primary" value="Take Survey">
         </form>
+        <% else %>
+        <form action= "/login" method="get">
+        <input type="submit" value="Take Survey">
+        </form>
+        <% end %>
       </div>
       <%end%>
   </div>
