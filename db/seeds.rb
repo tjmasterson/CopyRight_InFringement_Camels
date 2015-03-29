@@ -2,7 +2,7 @@ megalord = User.create(name: "megaloard", email: "megaloard@joejoe.com", passwor
 joe = User.create(name: "joe", email: "joe@joejoe.com", password: "joe120")
 joanne = User.create(name: "joanne", email: "joanne@joejoe.com", password: "joanna120")
 
-cuddle_bear_survey = Survey.create(creator: megalord, title: "Cuddle Bears?")
+cuddle_bear_survey = Survey.create(creator: megalord, description: "Imagine a world where there are only bears. How would you survive?",title: "Cuddle Bears?")
 
 cuddle_bear_question_one = cuddle_bear_survey.questions.create(content: "Do you cuddle with teddy bears in your darkest hour?")
 
@@ -21,9 +21,5 @@ response_two = Response.create(voter: joe, choice: choice_three)
 response_one = Response.create(voter: joanne, choice: choice_two)
 response_two = Response.create(voter: joanne, choice: choice_four)
 
+new_survey = Survey.create(creator: megalord, description: "We are the Bears Shufflin' Crew Shufflin' on down, doin' it for you. We're so bad we know we're good. Blowin' your mind like we knew we would. You know we're just struttin' for fun Struttin' our stuff for everyone. We're not here to start no trouble. We're just here to do the Super Bowl Shuffle.", title: "Bears.")
 
-post '/survey' do
-  @new_survey = Survey.create(creator: session[user_id])
-  @new_survey.questions.create(params[:questions])
-
-end

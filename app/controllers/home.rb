@@ -1,15 +1,8 @@
-# get '/' do
-#   @surveys = Survey.all
+get '/' do
 
-#   erb :surveys
-# end
-
-#not done
-post '/' do
-  @email = params[:email]
-  user = User.authenticate(@email, params[:password])
-    if user
-      session[:user_id] = user.id
-      redirect '/'
-    end
+ redirect '/surveys'
 end
+
+
+
+
