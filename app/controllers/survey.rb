@@ -9,6 +9,8 @@ get '/surveys/:id' do
   puts session.inspect
   puts current_user
   if current_user
+    puts session.inspect
+    puts current_user
      @survey = Survey.find(params[:id])
      @questions = @survey.questions
      erb :"surveys/show"
@@ -18,7 +20,19 @@ get '/surveys/:id' do
 end
 
   post '/surveys/:survey_id/complete' do
-      puts current_user.id
-      puts params
-      current_user.responses.create()
+    @survey = Survey.find_by(id: params[:survey_id])
+    puts params
+
+    # @response = Response.new(params[:choice])
+    # @response.save
+
+    # current_user.responses.create(survey: @survey, choice: )
+    redirect "surveys/#{@survey.id}/results"
   end
+
+get '/surveys/:survey_id/results' do
+  @survey = params[:survey_id]
+
+
+  erb :"results/show"
+end

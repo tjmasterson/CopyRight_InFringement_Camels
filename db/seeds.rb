@@ -15,11 +15,11 @@ choice_three = cuddle_bear_question_two.choices.create(content: "Yes")
 
 choice_four = cuddle_bear_question_two.choices.create(content: "No")
 
-response_one = Response.create(voter: joe, choice: choice_one)
-response_two = Response.create(voter: joe, choice: choice_three)
+response_one = Response.create(voter: joe, choice: choice_one, survey: cuddle_bear_survey)
+response_two = Response.create(voter: joe, choice: choice_three, survey: cuddle_bear_survey)
 
-response_one = Response.create(voter: joanne, choice: choice_two)
-response_two = Response.create(voter: joanne, choice: choice_four)
+response_one = Response.create(voter: joanne, choice: choice_two, survey: cuddle_bear_survey)
+response_two = Response.create(voter: joanne, choice: choice_four, survey: cuddle_bear_survey)
 
 new_survey = Survey.create(creator: megalord, description: "We are the Bears Shufflin' Crew Shufflin' on down, doin' it for you. We're so bad we know we're good. Blowin' your mind like we knew we would. You know we're just struttin' for fun Struttin' our stuff for everyone. We're not here to start no trouble. We're just here to do the Super Bowl Shuffle.", title: "Bears.")
 
