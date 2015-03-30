@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   has_many :responses, foreign_key: :voter_id
   has_many :choices, through: :responses
   has_many :answered_questions, through: :choices, source: :question
-  has_many :completed_surveys, through: :answered_questions
-
+  has_many :completed_surveys, through: :answered_questions, source: :survey
   # validates :name, :length => { :minimum => 3, :message => "must be at least 3 characters, fool!" }
   # validates :entered_password, :length => { :minimum => 6 }
   # validates :email, :uniqueness => true, :format => /.+@.+\..+/ # imperfect, but okay
@@ -24,5 +23,9 @@ class User < ActiveRecord::Base
     user = User.find_by_email(params[:email]) #finds user based off the given email
     (user && user.password == params[:password]) ? user : nil #returns user if the user was found by password AND its password is equal to the password given
   end
+
+
+
+
 
 end

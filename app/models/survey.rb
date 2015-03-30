@@ -5,7 +5,6 @@ class Survey < ActiveRecord::Base
   has_many :responses, through: :choices
   has_many :voters, through: :responses
 
-# {"survey"=>{"title"=>"This is the name", "description"=>"here is the description"}, "question"=>{"content"=>"question 1 --"}, "option"=>{"content1"=>"option 1 --", "content2"=>"option 2 --", "content3"=>"option 3 --"}}
 
   def add_question(hash)
     question = Question.create(hash[:question].merge(survey_id: self.id))
@@ -16,5 +15,9 @@ class Survey < ActiveRecord::Base
 
   def total_voters
     self.voters.uniq.count
+  end
+
+  def recent_responses(user_id)
+    self.responses.where(voter_id: user_id)
   end
 end
