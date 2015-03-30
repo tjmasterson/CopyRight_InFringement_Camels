@@ -9,6 +9,9 @@
   <% current_user.view_surveys(current_user.id).each do |survey|%>
   <li><h3 class="text-muted"><a href="/surveys/<%=survey.id%>"><%= survey.title%></h3></li>
   <li><h4 class="text-muted"><%= survey.description%></h4></li>
+  <li><form action= "/surveys/<%=survey.id%>/results" method="get">
+        <input type="submit" class="btn btn-primary" value="View Results">
+        </form></li>
   <%end%>
 </ul>
 
