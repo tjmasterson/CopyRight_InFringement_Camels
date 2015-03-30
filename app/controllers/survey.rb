@@ -16,7 +16,7 @@ post '/surveys' do
   puts @survey.id
   @survey.add_question(params)
 
-  erb :"surveys/show"
+  redirect "/surveys"
 end
 
 get '/surveys/:id' do
