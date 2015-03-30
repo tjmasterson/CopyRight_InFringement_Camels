@@ -10,10 +10,13 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
+  puts session.inspect
+  puts params
   @survey = Survey.create(params[:survey])
+  puts @survey.id
   @survey.add_question(params)
 
-  erb :"surveys/show"
+  redirect "/surveys"
 end
 
 get '/surveys/:id' do
