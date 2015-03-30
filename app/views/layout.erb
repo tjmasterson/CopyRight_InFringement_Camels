@@ -51,6 +51,12 @@
           </ul>
         </nav>
       <h3 class="text-muted">Copyright Infringement Camels</h3>
+      <% if current_user %>
+      <hr>
+      <li style="text-align:center" class="nav nav-pills" role="presentation">
+        <a href="/user/<%=current_user.id%>/surveys">View My Surveys     </a>
+        <a href="/surveys/new" >|     Create Survey</a></li>
+      <% end %>
     </div>
   <%= yield %>
 

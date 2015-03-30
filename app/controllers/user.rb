@@ -39,6 +39,11 @@ post "/signup" do
 
 end
 
+get "/user/:user_id/surveys"do
+
+  erb :"users/show"
+end
+
 get "/logout" do
   session[:user_id] = nil
   redirect "/surveys"
