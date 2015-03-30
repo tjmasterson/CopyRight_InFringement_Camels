@@ -31,8 +31,13 @@ class User < ActiveRecord::Base
     (user && user.password == params[:password]) ? user : nil #returns user if the user was found by password AND its password is equal to the password given
   end
 
+  def view_surveys(user_id)
+    self.surveys.where(creator_id: user_id)
+  end
 
-
+  def created_surveys(user_id)
+    self.view_surveys(user_id).empty?
+  end
 
 
 end
