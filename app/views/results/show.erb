@@ -1,7 +1,20 @@
-<p>Here are your responses:</p>
+<div class="jumbotron">
+  <h1>Thanks for Taking the Survey!!!</h1>
+  <p class="lead"><img width=100% height=100% src="http://static3.businessinsider.com/image/537d065fecad04854057d10e-/andy-serkis-caesar-planet-of-the-apes.gif"</img></p>
+  <p>
+    <% if current_user %>
+    <a class="btn btn-lg btn-success" href="/surveys" role="button">Take Another Survey? :)</a>
+    <% else %>
+    <a class="btn btn-lg btn-success" href="/login" role="button">Sign In to Create/Take Survey :)</a>
+    <% end %>
+  </p>
+</div>
+
+<h3>Here are your responses:</h3>
 
 <%@survey.recent_responses(@user.id).each do |response|%>
-<p><%=response.choice.content%></p>
+<p><%=response.choice.question.content%></p>
+<p><i><%=response.choice.content%></i></p>
 <%end%>
 
 
