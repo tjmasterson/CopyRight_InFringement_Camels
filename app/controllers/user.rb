@@ -28,11 +28,13 @@ get "/signup" do
 end
 
 post "/signup" do
-  user = User.new(params[:user])
-  if user
+  user = User.create(params[:user])
+  if user.save
     session[:user_id] = user.id
-    user.save
     redirect "/surveys"
+  else
+    @errors = "Oops! Account creation didn't work, try again!"
+    erb :"users/login"
   end
 
 end

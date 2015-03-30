@@ -10,7 +10,7 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-  @survey = Survey.create(params[:survey].merge(user: current_user))
+  @survey = Survey.create(params[:survey].merge(creator: current_user))
   @survey.add_question(params)
 
   redirect "/surveys/#{@survey.id}"
