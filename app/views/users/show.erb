@@ -1,0 +1,19 @@
+<% if current_user.created_surveys(current_user.id) == true%>
+<h2>You have not created any surveys to view.</h2>
+<br>
+<a class="btn btn-lg btn-success" href="/surveys/new" role="button">Create Survey :)</a>
+<br>
+<% else%>
+<h1>My Surveys:</h1>
+<ul style="list-style-type:none">
+  <% current_user.view_surveys(current_user.id).each do |survey|%>
+  <li><h3 class="text-muted"><a href="/surveys/<%=survey.id%>"><%= survey.title%></h3></li>
+  <li><h4 class="text-muted"><%= survey.description%></h4></li>
+  <li><form action= "/surveys/<%=survey.id%>/results" method="get">
+        <input type="submit" class="btn btn-primary" value="View Results">
+        </form></li>
+  <%end%>
+</ul>
+
+<%end%>
+<br><br>
