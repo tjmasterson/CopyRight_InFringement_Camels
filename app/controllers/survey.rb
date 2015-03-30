@@ -10,20 +10,10 @@ get '/surveys/new' do
 end
 
 post '/surveys' do
-<<<<<<< HEAD
-  puts session.inspect
-  puts params
-  @survey = Survey.create(params[:survey])
-  puts @survey.id
-  @survey.add_question(params)
-
-  redirect "/surveys"
-=======
   @survey = Survey.create(params[:survey].merge(user: current_user))
   @survey.add_question(params)
 
   redirect "/surveys/#{@survey.id}"
->>>>>>> origin/complete_survey
 end
 
 get '/surveys/:id' do
