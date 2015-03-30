@@ -36,7 +36,7 @@ end
       question = Question.find_by(id: question_id.to_i)
       question.choices.each do |choice|
         if choice.content == response
-           Response.create(choice: choice, voter: current_user, survey: @survey)
+           Response.create(choice: choice, voter: current_user)
         end
       end
     end
@@ -47,8 +47,7 @@ get '/surveys/:survey_id/results' do
   @voters = User.all
   @survey = Survey.find_by(id: params[:survey_id])
   @user = current_user
-  @responses =
-  @overal
+
 
   erb :"results/show"
 end
