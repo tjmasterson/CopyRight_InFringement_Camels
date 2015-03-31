@@ -7,9 +7,9 @@ class Survey < ActiveRecord::Base
 
 
   def add_question(hash)
-    question = Question.create(hash[:question].merge(survey_id: self.id))
-    hash[:option].each do |con, option|
-      question.choices.create({"content" => option})
+    question = self.questions.create(hash[:question])
+    hash[:option].each do |_, value|
+      question.choices.create({"content" => value})
     end
   end
 

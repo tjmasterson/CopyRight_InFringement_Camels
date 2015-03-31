@@ -5,6 +5,7 @@ get '/surveys' do
 end
 
 get '/surveys/new' do
+  puts params
 
   erb :"surveys/new"
 end
